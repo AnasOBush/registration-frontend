@@ -15,11 +15,26 @@ function App() {
     })
   }
 
-  const handleSubmit = (e) => {
-    e.preventDefault()
-    console.log('Form submitted:', formData)
-    // We’ll send this to the backend later
+const handleSubmit = async (e) => {
+  e.preventDefault()
+
+  try {
+    const response = await fetch('http://localhost:8080/api/registration', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(formData),
+    })
+
+    const result = await response.text()
+    alert(result)  // Shows success message
+  } catch (error) {
+    console.error('Error submitting form:', error)
+    alert('Something went wrong!')
   }
+}
+
 
   return (
     <div style={{ padding: '2rem', maxWidth: '500px', margin: 'auto' }}>
