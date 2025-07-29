@@ -16,24 +16,36 @@ function App() {
   }
 
 const handleSubmit = async (e) => {
-  e.preventDefault()
+  e.preventDefault();
 
   try {
-    const response = await fetch('http://localhost:8080/api/registration', {
-      method: 'POST',
+    const response = await fetch("http://localhost:8080/api/registration", {
+      method: "POST",
       headers: {
-        'Content-Type': 'application/json',
+        "Content-Type": "application/json"
       },
-      body: JSON.stringify(formData),
-    })
+      body: JSON.stringify(formData)
+    });
 
-    const result = await response.text()
-    alert(result)  // Shows success message
+    if (response.ok) {
+      alert("Registration submitted successfully!");
+
+      // Reset the form
+      setFormData({
+        name: '',
+        email: '',
+        phone: '',
+        address: '',
+      });
+    } else {
+      alert("Failed to submit registration.");
+    }
   } catch (error) {
-    console.error('Error submitting form:', error)
-    alert('Something went wrong!')
+    console.error("Error submitting registration:", error);
+    alert("Error connecting to server.");
   }
-}
+};
+
 
 
   return (
