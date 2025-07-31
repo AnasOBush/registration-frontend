@@ -8,6 +8,14 @@ function App() {
     address: '',
   })
 
+  const [errors, setErrors] = useState({
+  name: '',
+  email: '',
+  phone: '',
+  address: '',
+});
+
+
   const handleChange = (e) => {
     setFormData({
       ...formData,
@@ -15,8 +23,46 @@ function App() {
     })
   }
 
+  const validateForm = () => {
+  const newErrors = {};
+  let isValid = true;
+
+  if (!formData.name.trim()) {
+    newErrors.name = "Name is required";
+    isValid = false;
+  }
+
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  if (!formData.email) {
+    newErrors.email = "Email is required";
+    isValid = false;
+  } else if (!emailRegex.test(formData.email)) {
+    newErrors.email = "Enter a valid email";
+    isValid = false;
+  }
+
+  const phoneRegex = /^[0-9]{10}$/;
+  if (!formData.phone) {
+    newErrors.phone = "Phone is required";
+    isValid = false;
+  } else if (!phoneRegex.test(formData.phone)) {
+    newErrors.phone = "Phone must be 10 digits";
+    isValid = false;
+  }
+
+  if (!formData.address.trim()) {
+    newErrors.address = "Address is required";
+    isValid = false;
+  }
+
+  setErrors(newErrors);
+  return isValid;
+};
+
 const handleSubmit = async (e) => {
   e.preventDefault();
+  if (!validateForm()) return;
+
 
   try {
     const response = await fetch("http://localhost:8080/api/registration", {
@@ -61,6 +107,7 @@ const handleSubmit = async (e) => {
             onChange={handleChange}
             required
           />
+          {errors.name && <div style={{ color: "red" }}>{errors.name}</div>}
         </label>
         <br /><br />
         
@@ -73,6 +120,7 @@ const handleSubmit = async (e) => {
             onChange={handleChange}
             required
           />
+          {errors.email && <div style={{ color: "red" }}>{errors.email}</div>}
         </label>
         <br /><br />
         
@@ -86,6 +134,7 @@ const handleSubmit = async (e) => {
             required
           />
         </label>
+        {errors.phone && <div style={{ color: "red" }}>{errors.phone}</div>}
         <br /><br />
         
         <label>
@@ -97,6 +146,7 @@ const handleSubmit = async (e) => {
             onChange={handleChange}
             required
           />
+          {errors.address && <div style={{ color: "red" }}>{errors.address}</div>}
         </label>
         <br /><br />
 
