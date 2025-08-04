@@ -95,8 +95,27 @@ const handleSubmit = async (e) => {
 
 
  return (
-  <div style={{ backgroundColor: '#e6f0ff', minHeight: '100vh', padding: '2rem' }}>
-    <div style={{ maxWidth: '600px', margin: 'auto', backgroundColor: '#ffffff', padding: '2rem', borderRadius: '10px', boxShadow: '0 0 10px rgba(0, 0, 0, 0.1)' }}>
+<div style={{
+  backgroundColor: '#e6f0ff',
+  minHeight: '100vh',
+  width: '100%',
+  display: 'flex',
+  justifyContent: 'center',
+  alignItems: 'center',
+  padding: '2rem',
+  boxSizing: 'border-box',
+  overflowY: 'auto'
+}}>
+
+ <div style={{
+  width: 'auto',
+  maxWidth: '600px',
+  backgroundColor: '#ffffff',
+  padding: '3rem',
+  borderRadius: '10px',
+  boxShadow: '0 0 20px rgba(0, 0, 0, 0.1)'
+}}>
+
       <h1 style={{ textAlign: 'center', color: '#0055cc', marginBottom: '1rem' }}>TutorBirds</h1>
       <h2 style={{ textAlign: 'center', marginBottom: '2rem' }}>Register</h2>
       <form onSubmit={handleSubmit}>
