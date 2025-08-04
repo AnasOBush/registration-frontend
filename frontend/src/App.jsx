@@ -94,9 +94,11 @@ const handleSubmit = async (e) => {
 
 
 
-  return (
-    <div style={{ padding: '2rem', maxWidth: '500px', margin: 'auto' }}>
-      <h2>Register</h2>
+ return (
+  <div style={{ backgroundColor: '#e6f0ff', minHeight: '100vh', padding: '2rem' }}>
+    <div style={{ maxWidth: '600px', margin: 'auto', backgroundColor: '#ffffff', padding: '2rem', borderRadius: '10px', boxShadow: '0 0 10px rgba(0, 0, 0, 0.1)' }}>
+      <h1 style={{ textAlign: 'center', color: '#0055cc', marginBottom: '1rem' }}>TutorBirds</h1>
+      <h2 style={{ textAlign: 'center', marginBottom: '2rem' }}>Register</h2>
       <form onSubmit={handleSubmit}>
         <label>
           Name:
@@ -105,12 +107,12 @@ const handleSubmit = async (e) => {
             name="name"
             value={formData.name}
             onChange={handleChange}
-            required
+            style={{ display: 'block', width: '100%', padding: '8px', marginBottom: '5px' }}
           />
-          {errors.name && <div style={{ color: "red" }}>{errors.name}</div>}
+          {errors.name && <div style={{ color: 'red' }}>{errors.name}</div>}
         </label>
-        <br /><br />
-        
+        <br />
+
         <label>
           Email:
           <input
@@ -118,12 +120,12 @@ const handleSubmit = async (e) => {
             name="email"
             value={formData.email}
             onChange={handleChange}
-            required
+            style={{ display: 'block', width: '100%', padding: '8px', marginBottom: '5px' }}
           />
-          {errors.email && <div style={{ color: "red" }}>{errors.email}</div>}
+          {errors.email && <div style={{ color: 'red' }}>{errors.email}</div>}
         </label>
-        <br /><br />
-        
+        <br />
+
         <label>
           Phone:
           <input
@@ -131,12 +133,12 @@ const handleSubmit = async (e) => {
             name="phone"
             value={formData.phone}
             onChange={handleChange}
-            required
+            style={{ display: 'block', width: '100%', padding: '8px', marginBottom: '5px' }}
           />
+          {errors.phone && <div style={{ color: 'red' }}>{errors.phone}</div>}
         </label>
-        {errors.phone && <div style={{ color: "red" }}>{errors.phone}</div>}
-        <br /><br />
-        
+        <br />
+
         <label>
           Address:
           <input
@@ -144,16 +146,20 @@ const handleSubmit = async (e) => {
             name="address"
             value={formData.address}
             onChange={handleChange}
-            required
+            style={{ display: 'block', width: '100%', padding: '8px', marginBottom: '5px' }}
           />
-          {errors.address && <div style={{ color: "red" }}>{errors.address}</div>}
+          {errors.address && <div style={{ color: 'red' }}>{errors.address}</div>}
         </label>
-        <br /><br />
+        <br />
 
-        <button type="submit">Submit</button>
+        <button type="submit" style={{ backgroundColor: '#0055cc', color: '#fff', padding: '10px 20px', border: 'none', borderRadius: '5px', cursor: 'pointer' }}>
+          Submit
+        </button>
       </form>
     </div>
-  )
+  </div>
+);
+
 }
 
 export default App
