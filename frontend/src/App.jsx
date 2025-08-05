@@ -71,7 +71,6 @@ const handleSubmit = async (e) => {
   e.preventDefault();
   if (!validateForm()) return;
 
-
   try {
     const response = await fetch("http://localhost:8080/api/registration", {
       method: "POST",
@@ -81,22 +80,28 @@ const handleSubmit = async (e) => {
       body: JSON.stringify(formData)
     });
 
-    if (response.ok) {
-    setSuccessMessage("🎉 Registration submitted successfully!");
+    const result = await response.text();
 
-  setFormData({
-    name: '',
-    email: '',
-    phone: '',
-    address: '',
-  });
-}
- 
-      else {
+    if (response.ok && result === "User registered successfully!") {
+      setSuccessMessage("Registration submitted successfully!");
+      setFormData({
+        name: '',
+        email: '',
+        phone: '',
+        address: '',
+        password: ''
+      });
+      setErrors({});
+    } else if (result === "Email already registered") {
+      setSuccessMessage('');
+      setErrors(prev => ({ ...prev, email: "This email is already registered." }));
+    } else {
+      setSuccessMessage('');
       alert("Failed to submit registration.");
     }
   } catch (error) {
     console.error("Error submitting registration:", error);
+    setSuccessMessage('');
     alert("Error connecting to server.");
   }
 };
