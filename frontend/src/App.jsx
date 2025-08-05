@@ -42,12 +42,12 @@ const [successMessage, setSuccessMessage] = useState('');
     isValid = false;
   }
 
-  const phoneRegex = /^[0-9]{10}$/;
+  const phoneRegex = /^[0-9]{11}$/;
   if (!formData.phone) {
     newErrors.phone = "Phone is required";
     isValid = false;
   } else if (!phoneRegex.test(formData.phone)) {
-    newErrors.phone = "Phone must be 10 digits";
+    newErrors.phone = "Phone must be 11 digits";
     isValid = false;
   }
 
@@ -195,7 +195,18 @@ const handleSubmit = async (e) => {
             onChange={handleChange}
             style={{ display: 'block', width: '100%', padding: '8px', marginBottom: '5px' }}
           />
-          {errors.phone && <div style={{ color: 'red' }}>{errors.phone}</div>}
+          {errors.phone && (
+    <div style={{
+      backgroundColor: '#f8d7da',
+      color: '#842029',
+      padding: '0.75rem',
+      borderRadius: '6px',
+      marginBottom: '1rem',
+      border: '1px solid #f5c2c7'
+    }}>
+      {errors.phone}
+    </div>
+  )}
         </label>
         <br />
 
