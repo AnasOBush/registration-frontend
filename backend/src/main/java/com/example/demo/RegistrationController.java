@@ -21,6 +21,7 @@ public class RegistrationController {
         user.setEmail(data.getEmail());
         user.setPhone(data.getPhone());
         user.setAddress(data.getAddress());
+        user.setPassword(data.getPassword());
 
         registrationService.register(user);
         return "User registered successfully!";

@@ -13,16 +13,10 @@ public class User {
     private String email;
     private String phone;
     private String address;
+    private String password;
 
-    // Constructors
+    // Default constructor
     public User() {}
-
-    public User(String name, String email, String phone, String address) {
-        this.name = name;
-        this.email = email;
-        this.phone = phone;
-        this.address = address;
-    }
 
     // Getters and setters
     public Long getId() {
@@ -60,5 +54,12 @@ public class User {
     public void setAddress(String address) {
         this.address = address;
     }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
 }
-// temp test
