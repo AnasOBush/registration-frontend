@@ -144,20 +144,45 @@ const handleSubmit = async (e) => {
             onChange={handleChange}
             style={{ display: 'block', width: '100%', padding: '8px', marginBottom: '5px' }}
           />
-          {errors.name && <div style={{ color: 'red' }}>{errors.name}</div>}
+          {errors.name && (
+            <div style={{
+              backgroundColor: '#f8d7da',
+              color: '#842029',
+              padding: '0.75rem',
+              borderRadius: '6px',
+              marginTop: '4px',
+              marginBottom: '12px',
+              border: '1px solid #f5c2c7'
+            }}>
+                {errors.name}
+              </div>
+            )}
+
         </label>
         <br />
 
         <label>
           Email:
           <input
-            type="email"
+            type="text"
             name="email"
             value={formData.email}
             onChange={handleChange}
             style={{ display: 'block', width: '100%', padding: '8px', marginBottom: '5px' }}
           />
-          {errors.email && <div style={{ color: 'red' }}>{errors.email}</div>}
+         {errors.email && (
+          <div style={{
+            backgroundColor: '#f8d7da',
+            color: '#842029',
+            padding: '0.75rem',
+            borderRadius: '6px',
+            marginTop: '4px',
+            marginBottom: '12px',
+            border: '1px solid #f5c2c7'
+          }}>
+            {errors.email}
+          </div>
+        )}
         </label>
         <br />
 
@@ -183,7 +208,18 @@ const handleSubmit = async (e) => {
             onChange={handleChange}
             style={{ display: 'block', width: '100%', padding: '8px', marginBottom: '5px' }}
           />
-          {errors.address && <div style={{ color: 'red' }}>{errors.address}</div>}
+          {errors.address && (
+           <div style={{
+            backgroundColor: '#f8d7da',
+            color: '#842029',
+            padding: '0.75rem',
+            borderRadius: '6px',
+            marginBottom: '1rem',
+            border: '1px solid #f5c2c7'
+          }}>
+      {errors.address}
+    </div>
+  )}
         </label>
         <br />
 
