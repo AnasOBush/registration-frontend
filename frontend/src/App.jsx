@@ -14,6 +14,7 @@ function App() {
   phone: '',
   address: '',
 });
+const [successMessage, setSuccessMessage] = useState('');
 
 
   const handleChange = (e) => {
@@ -74,16 +75,17 @@ const handleSubmit = async (e) => {
     });
 
     if (response.ok) {
-      alert("Registration submitted successfully!");
+    setSuccessMessage("🎉 Registration submitted successfully!");
 
-      // Reset the form
-      setFormData({
-        name: '',
-        email: '',
-        phone: '',
-        address: '',
-      });
-    } else {
+  setFormData({
+    name: '',
+    email: '',
+    phone: '',
+    address: '',
+  });
+}
+ 
+      else {
       alert("Failed to submit registration.");
     }
   } catch (error) {
@@ -118,6 +120,20 @@ const handleSubmit = async (e) => {
 
       <h1 style={{ textAlign: 'center', color: '#0055cc', marginBottom: '1rem' }}>TutorBirds</h1>
       <h2 style={{ textAlign: 'center', marginBottom: '2rem' }}>Register</h2>
+      {successMessage && (
+  <div style={{ 
+    backgroundColor: '#d1e7dd', 
+    color: '#0f5132', 
+    padding: '1rem', 
+    borderRadius: '8px', 
+    marginBottom: '1.5rem', 
+    border: '1px solid #badbcc' 
+  }}>
+    {successMessage}
+  </div>
+)}
+
+
       <form onSubmit={handleSubmit}>
         <label>
           Name:
