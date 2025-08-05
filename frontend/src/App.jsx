@@ -4,6 +4,7 @@ function App() {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
+    password: '',
     phone: '',
     address: '',
   })
@@ -11,6 +12,7 @@ function App() {
   const [errors, setErrors] = useState({
   name: '',
   email: '',
+  password: '',
   phone: '',
   address: '',
 });
@@ -41,6 +43,11 @@ const [successMessage, setSuccessMessage] = useState('');
     newErrors.email = "Enter a valid email";
     isValid = false;
   }
+
+  if (!formData.password || formData.password.length < 6) {
+  newErrors.password = "Password must be at least 6 characters";
+  isValid = false;
+}
 
   const phoneRegex = /^[0-9]{11}$/;
   if (!formData.phone) {
@@ -185,6 +192,32 @@ const handleSubmit = async (e) => {
         )}
         </label>
         <br />
+
+        <label>
+          Password:
+          <input
+            type="password"
+            name="password"
+            value={formData.password}
+            onChange={handleChange}
+            style={{ display: 'block', width: '100%', padding: '8px', marginBottom: '5px' }}
+          />
+          {errors.password && (
+          <div style={{
+            backgroundColor: '#f8d7da',
+            color: '#842029',
+            padding: '0.75rem',
+            borderRadius: '6px',
+            marginTop: '4px',
+            marginBottom: '12px',
+            border: '1px solid #f5c2c7'
+          }}>
+            {errors.password}
+          </div>
+        )}
+        </label>
+        <br />
+
 
         <label>
           Phone:
